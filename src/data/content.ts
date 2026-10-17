@@ -35,15 +35,15 @@ export const profile = {
 
 export const ui = {
   es: {
-    title: 'Arturo Céspedes · Desarrollador Full Stack',
+    title: 'Arturo Céspedes · Desarrollador Full Stack Senior',
     description:
-      'Portfolio de Arturo Céspedes Pedrazas, desarrollador Full Stack en Sevilla: Java, Spring Boot, Angular y Flutter.',
+      'Portfolio de Arturo Céspedes Pedrazas, desarrollador Full Stack Senior en Sevilla: Java, Spring Boot, Angular y Flutter.',
     welcome: 'Bienvenido',
     hello: '¡Hola! Soy',
-    role: 'desarrollador Full Stack',
+    role: 'desarrollador Full Stack Senior',
     intro:
       'especializado en Java, Spring Boot y Angular. Me gusta construir productos completos: desde la API y la base de datos hasta la app que usa la gente.',
-    now: 'Ahora mismo desarrollo y optimizo aplicaciones empresariales en Metrica, y en mi tiempo libre lanzo proyectos propios que están en producción.',
+    now: 'Ahora mismo soy desarrollador Senior en Metrica, donde desarrollo y optimizo aplicaciones empresariales, y en mi tiempo libre lanzo proyectos propios que están en producción.',
     available: 'Abierto a nuevas oportunidades',
     downloadCv: 'Descargar CV',
     writeMe: 'Escríbeme',
@@ -73,15 +73,15 @@ export const ui = {
     langHref: '/en/',
   },
   en: {
-    title: 'Arturo Céspedes · Full Stack Developer',
+    title: 'Arturo Céspedes · Senior Full Stack Developer',
     description:
-      'Portfolio of Arturo Céspedes Pedrazas, Full Stack Developer based in Seville: Java, Spring Boot, Angular and Flutter.',
+      'Portfolio of Arturo Céspedes Pedrazas, Senior Full Stack Developer based in Seville: Java, Spring Boot, Angular and Flutter.',
     welcome: 'Welcome',
     hello: "Hi! I'm",
-    role: 'a Full Stack Developer',
+    role: 'a Senior Full Stack Developer',
     intro:
       'specialised in Java, Spring Boot and Angular. I enjoy building complete products: from the API and the database to the app people actually use.',
-    now: 'I currently build and optimise enterprise applications at Metrica, and in my spare time I ship my own projects to production.',
+    now: 'I’m currently a Senior Developer at Metrica, building and optimising enterprise applications, and in my spare time I ship my own projects to production.',
     available: 'Open to new opportunities',
     downloadCv: 'Download CV',
     writeMe: 'Email me',
@@ -115,7 +115,7 @@ export const ui = {
 export const experience = [
   {
     company: 'Metrica',
-    role: { es: 'Desarrollador Full Stack', en: 'Full Stack Developer' },
+    role: { es: 'Desarrollador Full Stack Senior', en: 'Senior Full Stack Developer' },
     from: { es: 'Feb 2025', en: 'Feb 2025' },
     to: null,
     summary: {
