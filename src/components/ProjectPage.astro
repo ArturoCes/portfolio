@@ -1,0 +1,71 @@
+---
+import Icon from './Icon.astro';
+import { type Lang, type Project, ui } from '../data/content';
+import { icons } from '../data/icons';
+
+interface Props {
+  lang: Lang;
+  project: Project;
+}
+
+const { lang, project: p } = Astro.props;
+const t = ui[lang];
+const home = lang === 'es' ? '/' : '/en/';
+const gallery = p.gallery ?? [p.image];
+---
+
+<main class="mx-auto max-w-5xl px-4 py-8 sm:py-14">
+  <a href={`${home}#proyectos`} class="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-400 hover:text-white">
+    <span aria-hidden="true">←</span> {t.back}
+  </a>
+
+  <div class="mt-5 grid gap-4 lg:grid-cols-3">
+    <section class="card reveal lg:col-span-2" style="--i:0">
+      {p.status && <p class="text-xs font-semibold text-violet-300">{p.status[lang]}</p>}
+      <h1 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{p.name}</h1>
+      <p class="mt-2 text-lg text-zinc-300">{p.tagline[lang]}</p>
+      <p class="mt-4 leading-relaxed text-zinc-400">{p.description[lang]}</p>
+      <div class="mt-6 flex flex-wrap gap-2.5">
+        {p.links.map((l) => (
+          <a class="btn-icon" href={l.href} target="_blank" rel="noopener">
+            {l.kind === 'code' && <Icon name="github" size={18} mono />}
+            {l.label[lang]} <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+        {p.privateCode && <span class="btn-icon cursor-default text-zinc-500 hover:transform-none">{t.privateCode}</span>}
+      </div>
+    </section>
+
+    <section class="card reveal" style="--i:1">
+      <h2 class="card-title">{t.stack}</h2>
+      <ul class="mt-4 grid grid-cols-1 gap-2">
+        {p.tech.map((k) => (
+          <li class="flex items-center justify-between gap-3 rounded-xl bg-card-2 px-3 py-2">
+            <span class="text-sm font-semibold">{icons[k].title}</span>
+            <Icon name={k} size={20} />
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="card reveal lg:col-span-3 p-3 sm:p-4" style="--i:2">
+      <div class:list={['grid gap-3', gallery.length > 1 && 'md:grid-cols-2']}>
+        {gallery.map((src) => (
+          <img src={src} alt={`${p.name}`} loading="lazy" class="w-full rounded-xl border border-line object-cover object-top" />
+        ))}
+      </div>
+    </section>
+
+    <section class="card reveal lg:col-span-3" style="--i:3">
+      <h2 class="card-title">{t.highlights}</h2>
+      <ul class="mt-4 grid gap-3 md:grid-cols-2">
+        {p.highlights[lang].map((h) => (
+          <li class="flex gap-3 rounded-xl bg-card-2 p-3 text-sm leading-relaxed text-zinc-300">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-gradient-to-br from-violet-400 to-cyan-300"></span>
+            {h}
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</main>

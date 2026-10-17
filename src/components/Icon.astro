@@ -1,0 +1,28 @@
+---
+import { icons } from '../data/icons';
+
+interface Props {
+  name: string;
+  size?: number;
+  mono?: boolean;
+  class?: string;
+}
+
+const { name, size = 22, mono = false, class: className = '' } = Astro.props;
+const icon = icons[name];
+---
+
+{icon && (
+  <svg
+    role="img"
+    aria-label={icon.title}
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    class={className}
+    fill={mono ? 'currentColor' : icon.color}
+  >
+    <title>{icon.title}</title>
+    <path d={icon.path} />
+  </svg>
+)}

@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Onest", ui-sans-serif, system-ui, sans-serif;
+  --color-bg: #09090b;
+  --color-card: #111114;
+  --color-card-2: #17171c;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-muted: #a1a1aa;
+  --color-accent: #8b5cf6;
+  --color-accent-2: #22d3ee;
+}
+
+html {
+  background: var(--color-bg);
+  color: #f4f4f5;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tarjeta base del bento */
+.card {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.card:hover {
+  border-color: rgb(255 255 255 / 0.16);
+}
+
+/* Brillo que sigue al ratón (se activa desde el script de la página) */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(420px circle at var(--x, 50%) var(--y, 50%), rgb(139 92 246 / 0.12), transparent 60%);
+}
+.card:hover::before {
+  opacity: 1;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #c4b5fd, #67e8f9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Botones redondos con icono */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.75rem;
+  padding: 0 1rem;
+  border-radius: 0.875rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-card-2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.btn-icon:hover {
+  border-color: rgb(139 92 246 / 0.6);
+  background: rgb(139 92 246 / 0.12);
+  transform: translateY(-1px);
+}
+.btn-icon:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Aparición suave al cargar */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: reveal 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 70ms);
+  }
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
