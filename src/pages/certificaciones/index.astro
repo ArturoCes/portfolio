@@ -1,0 +1,9 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CertsPage from '../../components/CertsPage.astro';
+import { ui } from '../../data/content';
+---
+
+<Layout lang="es" title={ui.es.certsPageTitle} description={ui.es.certsIntro}>
+  <CertsPage lang="es" />
+</Layout>

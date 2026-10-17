@@ -55,6 +55,14 @@ export const ui = {
     education: 'Formación',
     languages: 'Idiomas',
     strengths: 'Más allá del código',
+    certs: 'Cursos y certificaciones',
+    certsHint: 'horas de formación',
+    certsAll: 'Ver todos',
+    certsPageTitle: 'Cursos y certificaciones · Arturo Céspedes',
+    certsIntro: 'Todo lo que he estudiado por mi cuenta. Cada uno enlaza a su verificación oficial.',
+    certsSearch: 'Buscar curso o plataforma…',
+    certsFilterAll: 'Todos',
+    certsEmpty: 'No hay ningún curso con esa búsqueda.',
     contact: 'Contacto',
     contactText: '¿Tienes un proyecto o una vacante? Hablemos.',
     copy: 'Copiar email',
@@ -92,6 +100,14 @@ export const ui = {
     education: 'Education',
     languages: 'Languages',
     strengths: 'Beyond the code',
+    certs: 'Courses & certifications',
+    certsHint: 'hours of training',
+    certsAll: 'View all',
+    certsPageTitle: 'Courses & certifications · Arturo Céspedes',
+    certsIntro: 'Everything I have studied on my own. Each one links to its official verification.',
+    certsSearch: 'Search a course or platform…',
+    certsFilterAll: 'All',
+    certsEmpty: 'No course matches that search.',
     contact: 'Contact',
     contactText: 'Got a project or an opening? Let’s talk.',
     copy: 'Copy email',
@@ -362,7 +378,7 @@ export const education = {
 
 export const languages = [
   { name: { es: 'Español', en: 'Spanish' }, level: { es: 'Nativo', en: 'Native' }, value: 100 },
-  { name: { es: 'Inglés', en: 'English' }, level: { es: 'B2 · Intermedio alto', en: 'B2 · Upper-intermediate' }, value: 70 },
+  { name: { es: 'Inglés', en: 'English' }, level: { es: 'C1 · Avanzado (EF SET)', en: 'C1 · Advanced (EF SET)' }, value: 85 },
 ];
 
 export function yearsOfExperience(now = new Date()): number {

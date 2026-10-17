@@ -2,6 +2,8 @@
 import Icon from './Icon.astro';
 import Avatar from './Avatar.astro';
 import LangMenu from './LangMenu.astro';
+import CertItem from './CertItem.astro';
+import { byDate, certifications, totalHours } from '../data/certifications';
 import {
   type Lang,
   education,
@@ -24,6 +26,8 @@ const { lang } = Astro.props;
 const t = ui[lang];
 const base = lang === 'es' ? '/proyectos/' : '/en/projects/';
 const langHrefs = { es: '/', en: '/en/' };
+const certsHref = lang === 'es' ? '/certificaciones/' : '/en/certifications/';
+const featuredCerts = byDate.filter((c) => c.featured);
 const stats = [
   { value: `${yearsOfExperience()}+`, label: t.years },
   { value: String(experience.length), label: t.companies },
@@ -274,9 +278,27 @@ const stats = [
         ))}
       </div>
     </section>
+    <!-- Cursos y certificaciones (los destacados; el resto en su página) -->
+    <section class="card reveal md:col-span-2 lg:col-span-4" style="--i:9">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h2 class="card-title">{t.certs}</h2>
+        <p class="text-xs text-zinc-400">
+          <span class="gradient-text text-base font-extrabold">{certifications.length}</span> {lang === 'es' ? 'certificados' : 'certificates'} ·
+          <span class="gradient-text text-base font-extrabold">+{totalHours}</span> {t.certsHint}
+        </p>
+      </div>
+      <ul class="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+        {featuredCerts.map((cert) => (
+          <li><CertItem cert={cert} lang={lang} /></li>
+        ))}
+      </ul>
+      <a href={certsHref} class="btn-icon mt-4 w-full justify-center">
+        {t.certsAll} ({certifications.length}) <span aria-hidden="true">→</span>
+      </a>
+    </section>
   </div>
 
-  <footer class="mt-4 card reveal text-center text-xs text-zinc-500" style="--i:9">
+  <footer class="mt-4 card reveal text-center text-xs text-zinc-500" style="--i:10">
     {t.footer} <span class="text-zinc-300">{profile.name}</span> · {new Date().getFullYear()}
   </footer>
 </main>

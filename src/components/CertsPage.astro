@@ -1,0 +1,121 @@
+---
+import CertItem from './CertItem.astro';
+import LangMenu from './LangMenu.astro';
+import { type Lang, ui } from '../data/content';
+import { byDate, categories, certifications, issuers, totalHours } from '../data/certifications';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+const home = lang === 'es' ? '/' : '/en/';
+const countBy = (id: string) => certifications.filter((c) => c.category === id).length;
+const platforms = new Set(certifications.map((c) => c.issuer)).size;
+---
+
+<main class="mx-auto max-w-5xl px-4 py-8 sm:py-14">
+  <div class="flex items-center justify-between gap-3">
+    <a href={home} class="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-400 hover:text-white">
+      <span aria-hidden="true">←</span> {t.back}
+    </a>
+    <LangMenu lang={lang} hrefs={{ es: '/certificaciones/', en: '/en/certifications/' }} />
+  </div>
+
+  <section class="card reveal mt-5" style="--i:0">
+    <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{t.certs}</h1>
+    <p class="mt-2 text-zinc-400">{t.certsIntro}</p>
+    <ul class="mt-5 grid grid-cols-3 gap-3">
+      <li class="rounded-xl bg-card-2 p-3 text-center">
+        <p class="gradient-text text-2xl font-extrabold sm:text-3xl">{certifications.length}</p>
+        <p class="text-xs text-zinc-400">{lang === 'es' ? 'certificados' : 'certificates'}</p>
+      </li>
+      <li class="rounded-xl bg-card-2 p-3 text-center">
+        <p class="gradient-text text-2xl font-extrabold sm:text-3xl">+{totalHours}</p>
+        <p class="text-xs text-zinc-400">{t.certsHint}</p>
+      </li>
+      <li class="rounded-xl bg-card-2 p-3 text-center">
+        <p class="gradient-text text-2xl font-extrabold sm:text-3xl">{platforms}</p>
+        <p class="text-xs text-zinc-400">{lang === 'es' ? 'plataformas' : 'platforms'}</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="card reveal mt-4" style="--i:1">
+    <label class="sr-only" for="cert-search">{t.certsSearch}</label>
+    <input
+      id="cert-search"
+      type="search"
+      placeholder={t.certsSearch}
+      class="w-full rounded-xl border border-line bg-card-2 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-violet-400 focus:outline-none"
+    />
+    <div class="mt-3 flex flex-wrap gap-2" role="group" aria-label="Filtros">
+      <button type="button" class="chip is-active" data-filter="all">{t.certsFilterAll} · {certifications.length}</button>
+      {categories.map((c) => (
+        <button type="button" class="chip" data-filter={c.id}>{c.label[lang]} · {countBy(c.id)}</button>
+      ))}
+    </div>
+
+    <ul class="mt-4 grid gap-3 md:grid-cols-2" id="cert-list">
+      {byDate.map((cert) => (
+        <li><CertItem cert={cert} lang={lang} /></li>
+      ))}
+    </ul>
+    <p id="cert-empty" class="mt-4 hidden text-center text-sm text-zinc-500">{t.certsEmpty}</p>
+
+    <p class="mt-5 text-xs text-zinc-500">
+      {Object.values(issuers).map((i) => i.name).join(' · ')}
+    </p>
+  </section>
+</main>
+
+<style>
+  .chip {
+    border-radius: 999px;
+    border: 1px solid var(--color-line);
+    background: var(--color-card-2);
+    padding: 0.35rem 0.8rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #d4d4d8;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .chip:hover {
+    border-color: rgb(255 255 255 / 0.25);
+  }
+  .chip.is-active {
+    border-color: rgb(139 92 246 / 0.7);
+    background: rgb(139 92 246 / 0.18);
+    color: #fff;
+  }
+</style>
+
+<script>
+  const search = document.getElementById('cert-search') as HTMLInputElement;
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const items = [...document.querySelectorAll<HTMLElement>('#cert-list > li')];
+  const empty = document.getElementById('cert-empty')!;
+  let filter = 'all';
+
+  function apply() {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    for (const li of items) {
+      const a = li.querySelector<HTMLElement>('[data-cert]')!;
+      const ok = (filter === 'all' || a.dataset.category === filter) && (!q || a.dataset.search!.includes(q));
+      li.hidden = !ok;
+      if (ok) shown++;
+    }
+    empty.classList.toggle('hidden', shown > 0);
+  }
+
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      filter = chip.dataset.filter!;
+      chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+      apply();
+    }),
+  );
+  search.addEventListener('input', apply);
+</script>
