@@ -10,7 +10,11 @@ export interface Project {
   description: Record<Lang, string>;
   highlights: Record<Lang, string[]>;
   image: string;
+  /** Animación corta del proyecto en uso (se muestra al pasar el ratón y en la ficha). */
+  gif?: string;
   gallery?: string[];
+  /** Cifras destacadas: valor y descripción. */
+  metrics: { value: string; label: Record<Lang, string> }[];
   tech: string[]; // claves de icons.ts
   links: { label: Record<Lang, string>; href: string; kind: 'demo' | 'code' | 'docs' }[];
   status?: Record<Lang, string>;
@@ -24,7 +28,7 @@ export const profile = {
   email: 'arturoc200212@gmail.com',
   github: 'https://github.com/ArturoCes',
   linkedin: 'https://www.linkedin.com/in/arturoces',
-  cv: '/Arturo_Cespedes_Pedrazas_CV_EN.pdf',
+  cv: { es: '/Arturo_Cespedes_Pedrazas_CV_ES.pdf', en: '/Arturo_Cespedes_Pedrazas_CV_EN.pdf' },
   startYear: 2023,
   startMonth: 3,
 };
@@ -182,6 +186,12 @@ export const projects: Project[] = [
       ],
     },
     image: '/projects/animanga.jpg',
+    gif: '/projects/animanga.gif',
+    metrics: [
+      { value: '3', label: { es: 'aplicaciones conectadas', en: 'connected apps' } },
+      { value: '59', label: { es: 'endpoints REST', en: 'REST endpoints' } },
+      { value: '51', label: { es: 'tests de integración', en: 'integration tests' } },
+    ],
     gallery: ['/projects/animanga.jpg', '/projects/animanga-admin.jpg'],
     tech: ['springboot', 'java', 'angular', 'flutter', 'postgresql', 'docker'],
     links: [
@@ -220,6 +230,12 @@ export const projects: Project[] = [
       ],
     },
     image: '/projects/blackstones.jpg',
+    gif: '/projects/blackstones.gif',
+    metrics: [
+      { value: '2', label: { es: 'métodos de pago (QR y tarjeta)', en: 'payment methods (QR and card)' } },
+      { value: 'IA', label: { es: 'probador virtual', en: 'virtual try-on' } },
+      { value: 'ES/EN', label: { es: 'tienda bilingüe', en: 'bilingual store' } },
+    ],
     tech: ['angular', 'springboot', 'postgresql', 'stripe', 'cloudinary'],
     links: [{ label: { es: 'Tienda', en: 'Store' }, href: 'https://ecommerce-frontend-pied-nu.vercel.app', kind: 'demo' }],
     status: { es: 'En producción · cliente real', en: 'In production · real client' },
@@ -253,10 +269,18 @@ export const projects: Project[] = [
       ],
     },
     image: '/projects/soloq.jpg',
+    gif: '/projects/soloq.gif',
+    metrics: [
+      { value: '67', label: { es: 'jugadores en seguimiento', en: 'players tracked' } },
+      { value: '2', label: { es: 'APIs oficiales (Riot y Twitch)', en: 'official APIs (Riot & Twitch)' } },
+      { value: 'OBS', label: { es: 'overlay para el directo', en: 'live stream overlay' } },
+    ],
     tech: ['nextjs', 'typescript', 'prisma', 'postgresql', 'tailwind', 'riot', 'twitch'],
-    links: [{ label: { es: 'Web', en: 'Website' }, href: 'https://soloq-tracker-arturoces-projects.vercel.app', kind: 'demo' }],
+    links: [
+      { label: { es: 'Web', en: 'Website' }, href: 'https://soloq-tracker-arturoces-projects.vercel.app', kind: 'demo' },
+      { label: { es: 'Código', en: 'Code' }, href: 'https://github.com/ArturoCes/soloq-tracker', kind: 'code' },
+    ],
     status: { es: 'En producción · no oficial', en: 'In production · unofficial' },
-    privateCode: true,
   },
 ];
 

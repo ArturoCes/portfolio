@@ -48,7 +48,24 @@ const gallery = p.gallery ?? [p.image];
       </ul>
     </section>
 
-    <section class="card reveal lg:col-span-3 p-3 sm:p-4" style="--i:2">
+    <section class="card reveal lg:col-span-3" style="--i:2">
+      <ul class="grid grid-cols-3 gap-3">
+        {p.metrics.map((m) => (
+          <li class="rounded-xl bg-card-2 p-3 text-center sm:p-4">
+            <p class="gradient-text text-2xl font-extrabold sm:text-3xl">{m.value}</p>
+            <p class="mt-1 text-xs text-zinc-400 sm:text-sm">{m.label[lang]}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {p.gif && (
+      <section class="card reveal lg:col-span-3 p-3 sm:p-4" style="--i:2">
+        <img src={p.gif} alt={`${p.name} en uso`} loading="lazy" class="mx-auto w-full max-w-3xl rounded-xl border border-line" />
+      </section>
+    )}
+
+    <section class="card reveal lg:col-span-3 p-3 sm:p-4" style="--i:3">
       <div class:list={['grid gap-3', gallery.length > 1 && 'md:grid-cols-2']}>
         {gallery.map((src) => (
           <img src={src} alt={`${p.name}`} loading="lazy" class="w-full rounded-xl border border-line object-cover object-top" />
