@@ -54,6 +54,7 @@ export const ui = {
     tech: 'Tecnologías',
     education: 'Formación',
     languages: 'Idiomas',
+    strengths: 'Más allá del código',
     contact: 'Contacto',
     contactText: '¿Tienes un proyecto o una vacante? Hablemos.',
     copy: 'Copiar email',
@@ -92,6 +93,7 @@ export const ui = {
     tech: 'Tech stack',
     education: 'Education',
     languages: 'Languages',
+    strengths: 'Beyond the code',
     contact: 'Contact',
     contactText: 'Got a project or an opening? Let’s talk.',
     copy: 'Copy email',
@@ -289,6 +291,68 @@ export const skills = [
   { group: { es: 'Frontend', en: 'Frontend' }, items: ['angular', 'typescript', 'react', 'flutter'] },
   { group: { es: 'Datos', en: 'Data' }, items: ['postgresql', 'mariadb', 'kafka'] },
   { group: { es: 'DevOps y calidad', en: 'DevOps & quality' }, items: ['docker', 'kubernetes', 'jenkins', 'sonarqube', 'junit', 'selenium'] },
+];
+
+// Habilidades que no son una tecnología concreta: calidad, IA y forma de trabajar
+export const strengths = [
+  {
+    icon: 'qa',
+    title: { es: 'Calidad y testing', en: 'Quality & testing' },
+    items: {
+      es: [
+        'Pruebas de regresión y smoke tests',
+        'Pruebas manuales y automatizadas',
+        'Automatización con Selenium, JUnit y Mockito',
+        'Detección y análisis de errores',
+        'Informes con métricas de calidad',
+      ],
+      en: [
+        'Regression and smoke testing',
+        'Manual and automated testing',
+        'Automation with Selenium, JUnit and Mockito',
+        'Bug detection and root-cause analysis',
+        'Quality metrics reporting',
+      ],
+    },
+  },
+  {
+    icon: 'ai',
+    title: { es: 'Inteligencia artificial', en: 'Artificial intelligence' },
+    items: {
+      es: [
+        'Entrenamiento y evaluación de agentes de IA',
+        'Revisión de respuestas y diseño de casos de prueba',
+        'Desarrollo asistido por IA en el día a día',
+        'Integración de modelos en productos reales',
+      ],
+      en: [
+        'AI agent training and evaluation',
+        'Response review and test case design',
+        'AI-assisted development in my daily work',
+        'Integrating models into real products',
+      ],
+    },
+  },
+  {
+    icon: 'team',
+    title: { es: 'Forma de trabajar', en: 'How I work' },
+    items: {
+      es: [
+        'Resolución de problemas y pensamiento crítico',
+        'Metodologías ágiles (Scrum, Jira)',
+        'CI/CD con Jenkins, SonarQube y GitHub Actions',
+        'Documentación de APIs y onboarding de equipo',
+        'Autodidacta y trabajo en equipo',
+      ],
+      en: [
+        'Problem solving and critical thinking',
+        'Agile methodologies (Scrum, Jira)',
+        'CI/CD with Jenkins, SonarQube and GitHub Actions',
+        'API documentation and team onboarding',
+        'Self-taught and a team player',
+      ],
+    },
+  },
 ];
 
 export const education = {
