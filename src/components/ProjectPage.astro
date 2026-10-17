@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import LangMenu from './LangMenu.astro';
 import { type Lang, type Project, ui } from '../data/content';
 import { icons } from '../data/icons';
 
@@ -15,9 +16,12 @@ const gallery = p.gallery ?? [p.image];
 ---
 
 <main class="mx-auto max-w-5xl px-4 py-8 sm:py-14">
-  <a href={`${home}#proyectos`} class="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-400 hover:text-white">
-    <span aria-hidden="true">←</span> {t.back}
-  </a>
+  <div class="flex items-center justify-between gap-3">
+    <a href={`${home}#proyectos`} class="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-400 hover:text-white">
+      <span aria-hidden="true">←</span> {t.back}
+    </a>
+    <LangMenu lang={lang} hrefs={{ es: `/proyectos/${p.slug}/`, en: `/en/projects/${p.slug}/` }} />
+  </div>
 
   <div class="mt-5 grid gap-4 lg:grid-cols-3">
     <section class="card reveal lg:col-span-2" style="--i:0">

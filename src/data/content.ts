@@ -70,8 +70,6 @@ export const ui = {
     highlights: 'Lo más destacado',
     stack: 'Tecnologías',
     footer: 'Hecho con Astro y Tailwind por',
-    langSwitch: 'English',
-    langHref: '/en/',
   },
   en: {
     title: 'Arturo Céspedes · Senior Full Stack Developer',
@@ -109,8 +107,6 @@ export const ui = {
     highlights: 'Highlights',
     stack: 'Tech stack',
     footer: 'Built with Astro and Tailwind by',
-    langSwitch: 'Español',
-    langHref: '/',
   },
 };
 
