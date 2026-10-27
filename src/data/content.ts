@@ -180,8 +180,8 @@ export const projects: Project[] = [
       en: 'Android workout app with streaks and progress',
     },
     description: {
-      es: 'Una app para entrenar que hice para mí: crea la rutina, te guía serie a serie y te motiva a no saltarte días. Ahora en prueba cerrada en Google Play.',
-      en: 'A workout app I built for myself: it builds the routine, guides you set by set and keeps you from skipping days. Now in closed testing on Google Play.',
+      es: 'Una app para entrenar que hice para mí: crea la rutina, te guía serie a serie y te motiva a no saltarte días. Ahora en prueba cerrada en Google Play: únete al grupo y luego instálala desde Play con la misma cuenta.',
+      en: 'A workout app I built for myself: it builds the routine, guides you set by set and keeps you from skipping days. Now in closed testing on Google Play: join the group, then install it from Play with the same account.',
     },
     highlights: {
       es: [
@@ -211,7 +211,8 @@ export const projects: Project[] = [
     ],
     tech: ['flutter', 'dart', 'supabase', 'postgresql', 'kotlin'],
     links: [
-      { label: { es: 'Probar la beta', en: 'Join the beta' }, href: 'https://groups.google.com/g/fitstreak-testers', kind: 'demo' },
+      { label: { es: '1 · Unirse a la beta', en: '1 · Join the beta' }, href: 'https://groups.google.com/g/fitstreak-testers', kind: 'demo' },
+      { label: { es: '2 · Instalar desde Play', en: '2 · Install from Play' }, href: 'https://play.google.com/apps/testing/com.arturoc.fitstreak', kind: 'demo' },
       { label: { es: 'Código', en: 'Code' }, href: 'https://github.com/ArturoCes/fitstreak', kind: 'code' },
       { label: { es: 'Privacidad', en: 'Privacy' }, href: 'https://arturoces.github.io/fitstreak/privacy.html', kind: 'docs' },
     ],
