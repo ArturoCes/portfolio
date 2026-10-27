@@ -171,6 +171,49 @@ export const experience = [
 
 export const projects: Project[] = [
   {
+    slug: 'fitstreak',
+    name: 'FitStreak',
+    tagline: {
+      es: 'App Android de rutinas de gimnasio con racha y progreso',
+      en: 'Android workout app with streaks and progress',
+    },
+    description: {
+      es: 'Una app para entrenar que hice para mí: crea la rutina, te guía serie a serie y te motiva a no saltarte días. Ahora en prueba cerrada en Google Play.',
+      en: 'A workout app I built for myself: it builds the routine, guides you set by set and keeps you from skipping days. Now in closed testing on Google Play.',
+    },
+    highlights: {
+      es: [
+        'Genera la rutina según días, objetivo, nivel, material y lesiones, o importa la tuya desde texto o .docx.',
+        'Entreno guiado con dibujos, la última marca precargada y aviso de cuándo subir peso (doble progresión).',
+        'Racha que respeta los días de descanso del plan, con protectores, widget y recordatorios.',
+        'Calorías con Health Connect: pasos, gasto y comida de otras apps; los entrenos se guardan de vuelta.',
+        'Resumen diario y semanal leído en voz alta, y burbuja flotante con el descanso sobre otras apps.',
+        'Local-first: funciona sin cuenta; Supabase solo para compartir rutinas, con borrado de cuenta en la app.',
+      ],
+      en: [
+        'Builds the routine from days, goal, level, equipment and injuries, or imports yours from text or .docx.',
+        'Guided workouts with drawings, last session prefilled and level-up hints (double progression).',
+        'A streak that respects the plan’s rest days, with freezes, a home screen widget and reminders.',
+        'Calories through Health Connect: steps, burned and eaten from other apps; workouts are written back.',
+        'Daily and weekly summaries read aloud, and a floating rest-timer bubble over other apps.',
+        'Local-first: no account needed; Supabase only for sharing routines, with in-app account deletion.',
+      ],
+    },
+    image: '/projects/fitstreak.jpg',
+    metrics: [
+      { value: '96', label: { es: 'tests automáticos', en: 'automated tests' } },
+      { value: '6', label: { es: 'datos de Health Connect', en: 'Health Connect data types' } },
+      { value: '0', label: { es: 'cuentas obligatorias', en: 'accounts required' } },
+    ],
+    tech: ['flutter', 'dart', 'supabase', 'postgresql', 'kotlin'],
+    links: [
+      { label: { es: 'Probar la beta', en: 'Join the beta' }, href: 'https://groups.google.com/g/fitstreak-testers', kind: 'demo' },
+      { label: { es: 'Código', en: 'Code' }, href: 'https://github.com/ArturoCes/fitstreak', kind: 'code' },
+      { label: { es: 'Privacidad', en: 'Privacy' }, href: 'https://arturoces.github.io/fitstreak/privacy.html', kind: 'docs' },
+    ],
+    status: { es: 'Prueba cerrada en Google Play', en: 'Closed testing on Google Play' },
+  },
+  {
     slug: 'animanga',
     name: 'Animanga',
     tagline: {

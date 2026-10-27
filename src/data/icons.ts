@@ -23,6 +23,9 @@ import {
   siStripe,
   siTailwindcss,
   siTwitch,
+  siSupabase,
+  siDart,
+  siKotlin,
   siTypescript,
 } from 'simple-icons';
 
@@ -48,6 +51,9 @@ export const icons: Record<string, IconDef> = {
   typescript: brand(siTypescript),
   react: brand(siReact),
   flutter: brand(siFlutter),
+  dart: brand(siDart, '#40c4ff'),
+  kotlin: brand(siKotlin, '#a07cff'),
+  supabase: brand(siSupabase),
   nextjs: brand(siNextdotjs, '#ffffff'),
   postgresql: brand(siPostgresql, '#699eca'),
   mariadb: brand(siMariadb, '#c49a6c'),
