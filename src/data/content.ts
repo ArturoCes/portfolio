@@ -13,6 +13,8 @@ export interface Project {
   /** Animación corta del proyecto en uso (se muestra al pasar el ratón y en la ficha). */
   gif?: string;
   gallery?: string[];
+  /** Las capturas de la galería son de móvil (verticales): se muestran en fila. */
+  phoneGallery?: boolean;
   /** Cifras destacadas: valor y descripción. */
   metrics: { value: string; label: Record<Lang, string> }[];
   tech: string[]; // claves de icons.ts
@@ -200,6 +202,8 @@ export const projects: Project[] = [
       ],
     },
     image: '/projects/fitstreak.jpg',
+    gallery: [1, 2, 3, 4, 5, 6].map((n) => `/projects/fitstreak-0${n}.jpg`),
+    phoneGallery: true,
     metrics: [
       { value: '96', label: { es: 'tests automáticos', en: 'automated tests' } },
       { value: '6', label: { es: 'datos de Health Connect', en: 'Health Connect data types' } },
